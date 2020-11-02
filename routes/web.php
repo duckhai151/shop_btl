@@ -11,6 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master');
+Route::get('/', 'HomeController@index');
+Route::get('contact', 'HomeController@contact');
+Route::get('category/{id}', 'ProductController@getProductsByCategory');
+Route::get('product/detail/{id}', 'ProductController@detail');
+Route::get('product/index', 'ProductController@index');
+Route::get('product/search', 'ProductController@getProductsByKey');
+
+Route::get('login', 'LoginController@login');
+Route::post('login', 'LoginController@postLogin');
+Route::get('logout', 'LoginController@logout');
+Route::post('register', 'LoginController@postRegister');
+
+Route::prefix('cart')->group(function () {
+    Route::get('/', 'CartController@index');
+    Route::post('/', 'CartController@postCart');
+    Route::get('checkout', 'CheckoutController@checkout');
+    Route::get('confirm', 'CheckoutController@confirm');
 });
+
+
+Route::post('comment', 'CommentController@postComment');
+Route::get('test', 'CartController@postCart');
+

@@ -1,0 +1,1 @@
+<p>{{ session('user.id') }}</p>
