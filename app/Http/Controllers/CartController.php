@@ -87,6 +87,14 @@ class CartController extends Controller
                 ]);
             }
         }
-        return Redirect::back()->with('success', 'Thêm thành công vào giỏ hàng');
+        return redirect()->back()->with('success', 'Thêm thành công vào giỏ hàng');
+    }
+
+    public function deleteItem(Request $request, $key)
+    {
+        session_start();
+        $id = $request->user()->id;
+        unset($_SESSION['cart'][$id][$key]);
+        return redirect()->back();
     }
 }

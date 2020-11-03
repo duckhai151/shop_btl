@@ -98,7 +98,7 @@
                             <p>Chất lượng cao</p>
                             <h3>{{ $category->name }}</h3>
                             <a href="{{ url('category', $category->id) }}" class="feature_btn">XEM NGAY <i class="fas fa-play"></i></a>
-                            <img src="{{ url('home/img/feature', $category->img) }}" alt="">
+                            <img  src="{{ url('images/categories', $category->img) }}" alt="">
                         </div>
                     </div>
                 @endforeach
@@ -127,12 +127,12 @@
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="single_product_item">
                                     <a href="{{ url('product/detail', $product->id) }}">
-                                        <img src="{{ url('images/products', $product->img) }}" alt="">
+                                        <img  width="250px" height="300px" src="{{ url('images/products', $product->img) }}" alt="">
                                     </a>
                                         <div class="single_product_text">
                                             <h4>{{ $product->name }}</h4>
                                             <h3>{{ $product->price }} <span>VNĐ</span></h3>
-                                            <a href="#" class="add_cart">+ thêm vào giỏ<i class="fas fa-shopping-cart"></i></a>
+                                            <a href="{{ url('product/detail', $product->id) }}" class="add_cart">Chi tiết sản phẩm</a>
                                         </div>
                                     </div>
                                 </div>

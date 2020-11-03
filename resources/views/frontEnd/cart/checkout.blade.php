@@ -28,7 +28,8 @@
         <div class="row">
             <div class="col-lg-8">
             <h3>Thông tin thanh toán</h3>
-            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+            <form class="row contact_form" action="{{ url('cart/confirm') }}" method="post" novalidate="novalidate">
+                {!! csrf_field() !!}
                 <div class="col-md-8 form-group p_star">
                     <input type="text" value="{{ $user->name }}" class="form-control"  name="name" placeholder="Họ tên" />
                 </div>
@@ -44,7 +45,7 @@
                 <div class="col-md-12 form-group p_star">
                     <input type="text" class="form-control" name="note" placeholder="Ghi chú" />
                 </div>
-            </form>
+            
             </div>
             <div class="col-lg-4">
             <div class="order_box">
@@ -55,22 +56,28 @@
                         <span>Tổng</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">Fresh Blackberry
-                        <span class="middle">x 02</span>
-                        <span class="last">$720.00</span>
-                        </a>
-                    </li>
+                    @foreach ($cartItem as $key => $item)
+                        <li>
+                            <a href="#">{{ $item['quantity'] }} x {{ $item['name'] }}
+                            <span class="last">{{ $item['total_price'] }} VNĐ</span>
+                            </a>
+                        </li>
+                        <input type="hidden" name="item[{{$key}}][name]" value="{{ $item['name'] }}">
+                        <input type="hidden" name="item[{{$key}}][quantity]" value="{{ $item['quantity'] }}">
+                        <input type="hidden" name="item[{{$key}}][total_price]" value="{{ $item['total_price'] }}">
+                    @endforeach      
                 </ul>
                 <ul class="list list_2">
                     <li>
                         <a href="#">Tổng tiền
-                        <span>$2210.00</span>
+                        <span>{{ $totalMoney }} VNĐ</span>
+                        <input type="hidden" name="total_money" value="{{ $totalMoney }}">
                         </a>
                     </li>
                 </ul>
                 <br>
-                <a class="btn_3" href="{{ url('cart/confirm') }}">Thanh toán</a>
+                <button class="btn_3" style="margin-left: 110px;" type="submit">Thanh toán</button>
+            </form>
             </div>
             </div>
         </div>

@@ -35,8 +35,9 @@
             </tr>
           </thead>
           <tbody>
-            <form action="#" method="POST">
-            @foreach ($cartItem as $item)
+            <form action="{{ url('cart/checkout') }}" method="POST">
+            {!! csrf_field() !!}
+            @foreach ($cartItem as $key => $item)
               <tr>
                 <td>
                   <div class="media">
@@ -62,7 +63,7 @@
                   <h5>{{ $item['total_price'] }} VNĐ</h5>
                 </td>
                 <td>
-                  <h5 style="padding-left:20px;"><a href="#"><i class="fas fa-trash-alt fa-2x"></i></a></h5>
+                  <h5 style="padding-left:20px;"><a href="{{ url('cart/delete', $key) }}"><i class="fas fa-trash-alt fa-2x"></i></a></h5>
                 </td>
               </tr>
             @endforeach   
@@ -78,12 +79,13 @@
                 <input type="hidden" name="total_money" value="{{ $totalMoney }}">
               </td>
             </tr>
-          </form>
           </tbody>
         </table>
         <div class="checkout_btn_inner float-right">
-          <a class="btn_1 checkout_btn_1" href="{{ url('cart/checkout') }}">Xác nhận thanh toán</a>
+          <button class="btn_3" type="submit">Xác nhận thanh toán</button>
         </div>
+      </form>
+
       </div>
     </div>
 </section>

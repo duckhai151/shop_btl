@@ -51,19 +51,19 @@
         </div>
         <div class="col-lg-6 col-lx-4">
           <div class="single_confirmation_details">
-            <h4>Billing Address</h4>
+            <h4>Thông tin khách hàng</h4>
             <ul>
               <li>
-                <p>Tên</p><span>: 56/8</span>
+                <p>Tên</p><span>: {{ $user['name'] }}</span>
               </li>
               <li>
-                <p>Địa chỉ</p><span>: Los Angeles</span>
+                <p>Địa chỉ</p><span>: {{ $user['address'] }}</span>
               </li>
               <li>
-                <p>Số điện thoại</p><span>: United States</span>
+                <p>Số điện thoại</p><span>: {{ $user['phone'] }}</span>
               </li>
               <li>
-                <p>Email</p><span>: 36952</span>
+                <p>Email</p><span>: {{ $user['email'] }}</span>
               </li>
             </ul>
           </div>
@@ -82,36 +82,18 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                  <th>x02</th>
-                  <th> <span>$720.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                  <th>x02</th>
-                  <th> <span>$720.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="2"><span>Pixelstore fresh Blackberry</span></th>
-                  <th>x02</th>
-                  <th> <span>$720.00</span></th>
-                </tr>
+                @foreach ($items as $item)
+                  <tr>
+                    <th colspan="2"><span>{{ $item['name'] }}</span></th>
+                    <th>{{ $item['quantity'] }}</th>
+                    <th> <span>{{ $item['total_price'] }} VNĐ</span></th>
+                  </tr>
+                @endforeach
                 <tr>
                   <th colspan="3">Subtotal</th>
-                  <th> <span>$2160.00</span></th>
-                </tr>
-                <tr>
-                  <th colspan="3">shipping</th>
-                  <th><span>flat rate: $50.00</span></th>
+                  <th> <span>{{ $totalMoney }} VNĐ</span></th>
                 </tr>
               </tbody>
-              <tfoot>
-                <tr>
-                  <th scope="col" colspan="3">Quantity</th>
-                  <th scope="col">Total</th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

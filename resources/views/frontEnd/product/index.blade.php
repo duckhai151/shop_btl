@@ -35,12 +35,12 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="single_product_item">
                                     <a href="{{ url('product/detail', $product->id) }}">
-                                        <img src="{{ url('images/products', $product->img) }}" alt="">
+                                        <img width="250px" height="300px" src="{{ url('images/products', $product->img) }}" alt="">
                                     </a>
                                     <div class="single_product_text">
                                         <h4>{{ $product->name }}</h4>
                                         <h3>{{ $product->price }} <span>VNĐ</span></h3>
-                                        <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                        <a href="{{ url('product/detail', $product->id) }}" class="add_cart">Chi tiết sản phẩm</a>
                                     </div>
                                 </div>
                             </div>

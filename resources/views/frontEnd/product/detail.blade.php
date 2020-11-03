@@ -55,9 +55,9 @@
           <form action="{{ url('cart') }}" method="POST">
           <div class="card_area d-flex justify-content-between align-items-center">
             <div class="product_count">
-              <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-              <input class="input-number" type="text" name="quantity" value="1" min="0" max="{{$product->stock}}">
-              <span class="number-increment"> <i class="ti-plus"></i></span>
+              {{-- <span class="inumber-decrement"> <i class="ti-minus"></i></span> --}}
+              <input class="input-number" type="number" name="quantity" value="1" min="0" max="{{$product->stock}}">
+              {{-- <span class="number-increment"> <i class="ti-plus"></i></span> --}}
             </div>
               {!! csrf_field() !!}
               <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -173,7 +173,7 @@
                           <div class="single_product_text">
                               <h4>{{ $product->name }}</h4>
                               <h3>{{ $product->price }} <span>VNĐ</span></h3>
-                              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                              <a href="{{ url('product/detail', $product->id) }}" class="add_cart">Chi tiết sản phẩm</a>
                           </div>
                       </div>
                   </div>

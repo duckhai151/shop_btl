@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $allProducts = Product::getAllProducts(4);
+        $allProducts = Product::getAllProducts(8);
         return view('frontEnd.product.index', compact('allProducts'));
     }
 

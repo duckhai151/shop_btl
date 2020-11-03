@@ -26,8 +26,9 @@ Route::post('register', 'LoginController@postRegister');
 Route::prefix('cart')->group(function () {
     Route::get('/', 'CartController@index');
     Route::post('/', 'CartController@postCart');
-    Route::get('checkout', 'CheckoutController@checkout');
-    Route::get('confirm', 'CheckoutController@confirm');
+    Route::get('delete/{key}', 'CartController@deleteItem');
+    Route::post('checkout', 'CheckoutController@checkout');
+    Route::post('confirm', 'CheckoutController@confirm');
 });
 
 
