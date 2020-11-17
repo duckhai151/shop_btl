@@ -16,16 +16,18 @@
     <link rel="stylesheet" href="{{ asset('home/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/lightslider.min.css') }}">
+    
 </head>
 
 <body>
     @include('frontEnd.layouts.header')
 
     @yield('content')
-
+    
     @include('frontEnd.layouts.footer')
     
     <!-- jquery plugins here-->
+    <script src="{{ asset('home/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('home/js/jquery-1.12.1.min.js') }}"></script>
     <script src="{{ asset('home/js/popper.min.js') }}"></script>
     <script src="{{ asset('home/js/bootstrap.min.js') }}"></script>
@@ -46,6 +48,10 @@
     <script src="{{ asset('home/js/theme.js') }}"></script>
     <script src="{{ asset('home/js/lightslider.min.js') }}"></script>
     <script src="{{ asset('home/js/stellar.js') }}"></script>
+    
+        @yield('script')
+    
+
 </body>
 
 </html>

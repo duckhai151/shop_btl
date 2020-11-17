@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +30,6 @@ class CheckoutController extends Controller
 
     public function confirm(Request $request)
     {
-        // dd($request->all());
         $user['name'] = $request->name;
         $user['phone'] = $request->phone;
         $user['address'] = $request->address;
@@ -38,6 +39,7 @@ class CheckoutController extends Controller
         foreach($request->item as $item)
         {
             array_push($items, [
+                'product_id' => $item['product_id'],
                 'name' => $item['name'],
                 'quantity' => $item['quantity'],
                 'total_price' => $item['total_price'],
@@ -45,15 +47,28 @@ class CheckoutController extends Controller
         }
 
         $totalMoney = $request->total_money;
-        // dd($items);
-        // $order = $user;
-        // $order = array_push($order, $items);
-        // Order::insert([
-        //     'name' => $user['name'],
-        //     'phone' => $user['phone'],
-        //     'address' => $user['address'],
-        //     'email' => $user['email']
-        // ]);
+
+        $order = Order::create([
+            'name' => $user['name'],
+            'phone' => $user['phone'],
+            'address' => $user['address'],
+            'email' => $user['email'],
+            'total_money' => $totalMoney
+        ]);
+
+        foreach($items as $item) 
+        {
+            OrderDetail::insert([
+                'order_id' => $order->id,
+                'product_id' => $item['product_id'],
+                'quantity' => $item['quantity'],
+                'total_money' => $item['total_price']
+            ]);
+
+            $product = Product::find($item['product_id']);
+            $product->stock -= $item['quantity'];
+            $product->save();
+        }
         return view('frontEnd.cart.confirm', compact('user', 'items', 'totalMoney'));
     }
 }

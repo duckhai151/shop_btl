@@ -34,7 +34,7 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="single_product_item">
                                     <a href="{{ url('product/detail', $product->id) }}">
-                                        <img src="{{ url('images/products', $product->img) }}" alt="">
+                                        <img  width="250px" height="300px" src="{{ url('images/products', $product->img) }}" alt="">
                                     </a>
                                     <div class="single_product_text">
                                         <h4>{{ $product->name }}</h4>

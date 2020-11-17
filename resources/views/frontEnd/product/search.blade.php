@@ -30,6 +30,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row align-items-center justify-content-between">
+                        @include('noti.error')
                         @if (count($productsByKey) == 0)
                             <div class="col-lg-12 col-sm-12">
                                 <h1 style="margin-bottom: 20px;">Rất tiếc. Không tìm thấy sản phẩm bạn yêu cầu .</h1>   
@@ -39,11 +40,11 @@
                         @foreach($productsByKey as $product)
                             <div class="col-lg-3 col-sm-6">
                                 <div class="single_product_item">
-                                <img src="{{ url('images/products', $product->img) }}" alt="">
+                                <img width="250px" height="300px" src="{{ url('images/products', $product->img) }}" alt="">
                                     <div class="single_product_text">
                                         <h4>{{ $product->name }}</h4>
                                         <h3>{{ $product->price }} <span>VNĐ</span></h3>
-                                        <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                        <a href="{{ url('product/detail', $product->id) }}" class="add_cart">Chi tiết sản phẩm</a>
                                     </div>
                                 </div>
                             </div>

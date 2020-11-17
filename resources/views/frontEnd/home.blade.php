@@ -1,7 +1,7 @@
 @extends('frontEnd.layouts.master')
 @section('title','Trang chủ')
 @section('content')
-    <section class="banner_part">
+    {{-- <section class="banner_part">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -80,8 +80,24 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- feature_part start-->
+    <!-- breadcrumb start-->
+<section class="breadcrumb breadcrumb_bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item">
+              <h2>Trang chủ</h2>
+              <p>Trang chủ <span></span> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- breadcrumb start-->
     <section class="feature_part padding_top">
         <div class="container">
             <div class="row justify-content-center">
@@ -153,13 +169,6 @@
                         <h5>Join Our Newsletter</h5>
                         <h2>Subscribe to get Updated
                             with new offers</h2>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="enter email address"
-                                aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <a href="#" class="input-group-text btn_2" id="basic-addon2">subscribe now</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,9 @@ class CommentController extends Controller
 {
     public function postComment(Request $request)
     {
+        $this->validate($request, [
+            'content' => 'required'
+        ]);
         Comment::insert([
             'content' => $request->content,
             'product_id' => $request->product_id,

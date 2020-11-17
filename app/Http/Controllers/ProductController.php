@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function getProductsByCategory($categoryId)
     {
-        $productsByCategory = Product::getProductsByCategory(2, 4);
+        $productsByCategory = Product::getProductsByCategory($categoryId, 4);
         return view('frontEnd.category.product', compact('productsByCategory'));
     }
 

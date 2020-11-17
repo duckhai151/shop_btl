@@ -21,12 +21,14 @@
  <section class="login_part padding_top">
     <div class="container">
         <div class="row align-items-center">
+            <div class="col-md-12">
+                @include('noti.error')
+                @include('noti.success')
+            </div>
             <div class="col-lg-6 col-md-6">
                 <div class="login_part_text text-center">
                     <div class="login_part_form_iner">
                         <h2 style="text-align: center; margin-bottom: 40px;">Đăng kí tài khoản</h2>
-                        @include('noti.error')
-                        @include('noti.success')
                         <form class="row contact_form" action="{{ url('register') }}" method="post" novalidate="novalidate">
                             {!! csrf_field() !!}
                             <div class="col-md-12 form-group p_star">
@@ -35,9 +37,9 @@
                             <div class="col-md-12 form-group p_star">
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
                             </div>
-                            <div class="col-md-12 form-group p_star">
+                            {{-- <div class="col-md-12 form-group p_star">
                                 <input type="password" class="form-control" id="rePassword" name="password" placeholder="Nhập lại mật khẩu">
-                            </div>
+                            </div> --}}
                             <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên">
                             </div>
