@@ -62,6 +62,7 @@
                             <span class="last">{{ $item['total_price'] }} VNĐ</span>
                             </a>
                         </li>
+                        <input type="hidden" name="item[{{$key}}][product_id]" value="{{ $item['product_id'] }}">
                         <input type="hidden" name="item[{{$key}}][name]" value="{{ $item['name'] }}">
                         <input type="hidden" name="item[{{$key}}][quantity]" value="{{ $item['quantity'] }}">
                         <input type="hidden" name="item[{{$key}}][total_price]" value="{{ $item['total_price'] }}">

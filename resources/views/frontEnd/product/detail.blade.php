@@ -45,26 +45,35 @@
               </a>
             </li>
             <li>
-              <a href="#"> <span>Tình trạng</span> : Còn hàng</a>
+              <a href="#"> <span>Kích thước</span> : {{ $product->size }} </a>
             </li>
+            @if ($product->stock > 0)
+              <li>
+                <a href="#"> <span>Tình trạng</span> : Còn hàng</a>
+              </li>
+            @else
+              <li>
+                <a href="#"> <span>Tình trạng</span> : Hết hàng</a>
+              </li>
+            @endif
+            
+            <br>
           </ul>
-          <p>
-            First replenish living. Creepeth image image. Creeping can't, won't called.
-            Two fruitful let days signs sea together all land fly subdue
-          </p>
           <form action="{{ url('cart') }}" method="POST">
           <div class="card_area d-flex justify-content-between align-items-center">
             <div class="product_count">
               {{-- <span class="inumber-decrement"> <i class="ti-minus"></i></span> --}}
-              <input class="input-number" type="number" name="quantity" value="1" min="0" max="{{$product->stock}}">
+              <input id="quantity" class="input-number" type="number" name="quantity" value="1" min="0" max="{{$product->stock}}">
               {{-- <span class="number-increment"> <i class="ti-plus"></i></span> --}}
             </div>
               {!! csrf_field() !!}
               <input type="hidden" name="product_id" value="{{ $product->id }}">
               <input type="hidden" name="name" value="{{ $product->name }}">
-              <input type="hidden" name="price" value="{{ $product->price }}">
+              <input type="hidden" id= 'price' name="price" value="{{ $product->price }}">
               <input type="hidden" name="image" value="{{ $product->img }}">
-              <button class="btn_3">add to cart</button>
+              @if ($product->stock > 0)
+                <button class="btn_3">add to cart</button>
+              @endif
             </form>
           </div>
           @include('noti.success')
@@ -82,22 +91,7 @@
 <div class="container">
   <div class="row" style="padding: 0px 15px;" >
       <p>
-        Beryl Cook is one of Britain’s most talented and amusing artists
-        .Beryl’s pictures feature women of all shapes and sizes enjoying
-        themselves .Born between the two world wars, Beryl Cook eventually
-        left Kendrick School in Reading at the age of 15, where she went
-        to secretarial school and then into an insurance office. After
-        moving to London and then Hampton, she eventually married her next
-        door neighbour from Reading, John Cook. He was an officer in the
-        Merchant Navy and after he left the sea in 1956, they bought a pub
-        for a year before John took a job in Southern Rhodesia with a
-        motor company. Beryl bought their young son a box of watercolours,
-        and when showing him how to use it, she decided that she herself
-        quite enjoyed painting. John subsequently bought her a child’s
-        painting set for her birthday and it was with this that she
-        produced her first significant work, a half-length portrait of a
-        dark-skinned lady with a vacant expression and large drooping
-        breasts. It was aptly named ‘Hangover’ by Beryl’s husband and
+        {{ $product->description }}
       </p>
   </div>
   <div class="row" style="margin-top: 50px;">
@@ -121,6 +115,7 @@
     </div>
     <div class="col-lg-6">
       <div class="review_box">
+        @include('noti.error')
         <h4>Bình luận cho sản phẩm</h4>
         @if (Auth::check())
           <form class="row contact_form" action="{{ url('comment') }}" method="POST">
@@ -184,5 +179,8 @@
   </div>
 </section>
 <!-- product_list part start-->
+
+@endsection
+@section('script')
 
 @endsection

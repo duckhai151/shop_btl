@@ -50,13 +50,11 @@
                   </div>
                 </td>
                 <td>
-                  <h5>{{ $item['price'] }} VNĐ</h5>
+                  <h5>{{ $item['price'] }}  VNĐ</h5>
                 </td>
                 <td>
                   <div class="product_count">
-                    <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                    <input class="input-number" type="text" value="{{ $item['quantity'] }}" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                    <input onclick="checkId({{$item['product_id']}}, {{$item['price']}})" id="quantity{{$item['product_id']}}" class="input-number" type="number" value="{{ $item['quantity'] }}" min="0" max="10">
                   </div>
                 </td>
                 <td>
@@ -82,12 +80,22 @@
           </tbody>
         </table>
         <div class="checkout_btn_inner float-right">
-          <button class="btn_3" type="submit">Xác nhận thanh toán</button>
+          <button  class="btn_3" type="submit">Xác nhận thanh toán</button>
         </div>
       </form>
-
+      <input id="test1" type="text" value="ss">
       </div>
     </div>
 </section>
 <!--================End Cart Area =================-->
+@endsection
+
+@section('script')
+<script language="javascript">
+  function checkId(id, price) {
+    var quantityId = '#quantity' + id;
+    var totalPrice = $(quantityId).val()*price;
+    $("#test1").attr("value", "500");
+  }
+</script>
 @endsection

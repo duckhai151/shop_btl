@@ -25,7 +25,10 @@ class LoginController extends Controller
 
     public function postLogin(Request $request) 
     {
-        // dd($this->urlPrevious);
+        $this->validate($request, [
+            'email'     => 'required',
+            'password'  => 'required'
+        ]);
         $email = $request->email;
         $password = $request->password;
         if(Auth::attempt(['email' => $email, 'password' => $password]))
@@ -39,6 +42,7 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email' => 'required',
+            'password' => 'required'
         ]);
         $account = $request->all();
         $account['password'] = Hash::make($request->password);
