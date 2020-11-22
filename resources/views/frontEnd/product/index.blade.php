@@ -32,7 +32,7 @@
                 <div class="col-lg-12">
                     <div class="row align-items-center justify-content-between">
                         @foreach($allProducts as $product)
-                            <div class="col-lg-3 col-sm-6">
+                            <div class="col-lg-3 col-sm-6"> 
                                 <div class="single_product_item">
                                     <a href="{{ url('product/detail', $product->id) }}">
                                         <img width="250px" height="300px" src="{{ url('images/products', $product->img) }}" alt="">

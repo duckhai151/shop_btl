@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = ['id', 'name', 'size', 'price', 'stock', 'img', 'description', 'created_at', 'updated_at'];
+
     public function categories() 
     {
         return $this->belongsToMany('App\Models\Category');
@@ -16,10 +18,11 @@ class Product extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
-    public static function getLatestProducts($number)
+    public static function getLatestProducts()
     {
         $products = Product::orderBy('created_at', 'decs')
-                            ->take($number)
+                            ->select('id', 'img', 'price', 'name')
+                            ->take(8)
                             ->get();
         return $products;
     }
@@ -34,13 +37,16 @@ class Product extends Model
 
     public static function getProductsByKey($key)
     {
-        $products = Product::where('name', 'LIKE', "%$key%")->paginate(8);
+        $products = Product::where('name', 'LIKE', "%$key%")
+                            ->select('id', 'img', 'price', 'name')
+                            ->paginate(8);
         return $products;
     }
 
     public static function getAllProducts($number)
     {
-        $products = Product::paginate($number);
+        $products = Product::select('id', 'img', 'price', 'name')
+                            ->paginate($number);
         return $products;
     }
 

@@ -33,5 +33,4 @@ Route::prefix('cart')->group(function () {
 
 
 Route::post('comment', 'CommentController@postComment');
-Route::get('test', 'CartController@postCart');
 

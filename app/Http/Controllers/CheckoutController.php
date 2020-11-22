@@ -45,7 +45,8 @@ class CheckoutController extends Controller
         }
 
         $totalMoney = $request->total_money;
-        // dd($items);
+        // foreach()
+        dd($items);
         // $order = $user;
         // $order = array_push($order, $items);
         // Order::insert([
